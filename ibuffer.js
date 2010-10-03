@@ -50,6 +50,8 @@ ibuffer_generator.prototype = {
 define_keymap("ibuffer_buffer_keymap", $parent = special_buffer_keymap);
 define_key(ibuffer_buffer_keymap, "q", "ibuffer-bury");
 define_key(ibuffer_buffer_keymap, "r", "ibuffer-regenerate");
+define_key(ibuffer_buffer_keymap, "return", "follow",
+           $browser_object = browser_object_focused_element);
 
 define_key(default_global_keymap, "C-x C-b", "ibuffer");
 
