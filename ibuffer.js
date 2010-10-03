@@ -35,13 +35,7 @@ ibuffer_generator.prototype = {
                         ev.stopPropagation();
                     }, false);
 
-                    let (t = b.title) {
-                        if (!t.length) {
-                            t = "(untitled)";
-                        }
-
-                        g.text(t, a);
-                    }
+                    g.text(b.title.length ? b.title : b.description, a);
 
                     li.appendChild(a);
                     ul.appendChild(li);
