@@ -1,0 +1,47 @@
+.ibuffer {
+  background-color: #eeeeee;
+  padding: 0px;
+  margin: 0px;
+}
+
+.ibuffer-list {
+  width: auto;
+}
+
+.ibuffer-buffer {
+  width: 90%;
+}
+
+.ibuffer-buffer-link {
+  color: black;
+  text-decoration: none;                
+}                
+
+.ibuffer-buffer-title {
+  display: inline-block;
+  /* border: 1px solid red; */
+  width: 30%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ibuffer-buffer-size {
+  display: inline-block;
+  /* border: 1px solid yellow; */
+  width: 5%;
+  text-align: right;                       
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ibuffer-buffer-desc {
+  display: inline-block;
+  /* border: 1px solid yellow; */
+  width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}

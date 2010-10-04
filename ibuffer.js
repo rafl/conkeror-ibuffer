@@ -12,6 +12,11 @@ require("interactive.js");
 function ibuffer_generator (document, buffer) {
     dom_generator.call(this, document, XHTML_NS);
     this.buffer = buffer;
+    /* usually we'd use something like
+     * "chrome://conkeror-gui/content/ibuffer.css", but that doesn't provide a
+     * way of putting the file anywhere but in sharedir, so let's just hardcode
+     * this for now. */
+    this.add_stylesheet("file:///home/rafl/projects/js/conkeror-ibuffer/ibuffer.css");
 }
 
 ibuffer_generator.prototype = {
@@ -22,13 +27,16 @@ ibuffer_generator.prototype = {
 
         let (g = this,
              p = this.element("p", this.document.body),
-             ul = this.element("ul")) {
+             ul = this.element("ul", "class", "ibuffer-list")) {
 
             bufs.for_each(function (b) {
-                let (li = g.element("li"),
-                     a = g.element("a", "class", "ibuffer-buffer-name",
-                                   "href", "javascript:")) {
-
+                let (li = g.element("li", "class", "ibuffer-buffer"),
+                     a = g.element("a", "class", "ibuffer-buffer-link",
+                                   "href", "javascript:"),
+                     title = g.element("span", "class", "ibuffer-buffer-title"),
+                     size  = g.element("span", "class", "ibuffer-buffer-size"),
+                     desc  = g.element("span", "class", "ibuffer-buffer-desc"))
+                {
                     a.addEventListener("click", function (ev) {
                         bufs.bury_buffer(g.buffer)
                         switch_to_buffer(g.buffer.window, b);
@@ -36,7 +44,13 @@ ibuffer_generator.prototype = {
                         ev.stopPropagation();
                     }, false);
 
-                    g.text(b.title.length ? b.title : b.description, a);
+                    g.text(b.title.length ? b.title : b.description, title);
+                    g.text("42", size);
+                    g.text(b.description, desc);
+
+                    a.appendChild(title);
+                    a.appendChild(size);
+                    a.appendChild(desc);
 
                     li.appendChild(a);
                     ul.appendChild(li);
