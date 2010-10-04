@@ -38,8 +38,8 @@ ibuffer_generator.prototype = {
                      desc  = g.element("span", "class", "ibuffer-buffer-desc"))
                 {
                     a.addEventListener("click", function (ev) {
-                        bufs.bury_buffer(g.buffer)
                         switch_to_buffer(g.buffer.window, b);
+                        bufs.bury_buffer(g.buffer)
                         ev.preventDefault();
                         ev.stopPropagation();
                     }, false);
