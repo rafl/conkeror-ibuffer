@@ -30,6 +30,7 @@ ibuffer_generator.prototype = {
                                    "href", "javascript:")) {
 
                     a.addEventListener("click", function (ev) {
+                        bufs.bury_buffer(g.buffer)
                         switch_to_buffer(g.buffer.window, b);
                         ev.preventDefault();
                         ev.stopPropagation();
