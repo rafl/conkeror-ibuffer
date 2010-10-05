@@ -39,7 +39,7 @@ ibuffer_generator.prototype = {
                 {
                     a.addEventListener("click", function (ev) {
                         switch_to_buffer(g.buffer.window, b);
-                        bufs.bury_buffer(g.buffer)
+                        bufs.bury_buffer(g.buffer);
                         ev.preventDefault();
                         ev.stopPropagation();
                     }, false);
